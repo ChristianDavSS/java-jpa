@@ -1,12 +1,12 @@
 package com.backend.infrastructure;
 
 import com.backend.domain.entity.Student;
-import com.backend.domain.ports.StudentRepository;
+import com.backend.domain.ports.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class InMemStorage implements StudentRepository {
+public class InMemStorage implements Repository<Student, Long> {
     List<Student> memory = new ArrayList<>();
 
     @Override
