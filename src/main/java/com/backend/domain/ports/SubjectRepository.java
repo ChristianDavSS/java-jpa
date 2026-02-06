@@ -4,7 +4,7 @@ import com.backend.domain.entity.Subject;
 
 public interface SubjectRepository {
     Subject getById(Long id);
-    void save(Subject subject);
+    Subject save(Subject subject);
     void update(Subject subject);
     void deleteById(Long id);
     Boolean existsById(Long id);

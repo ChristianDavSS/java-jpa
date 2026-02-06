@@ -16,7 +16,7 @@ public class Student {
     private Long id;
     private String surname;
     private String firstName;
-    private Byte age;
+    private Integer age;
 
     public Student() {}
 
@@ -39,7 +39,7 @@ public class Student {
         return this.firstName;
     }
 
-    public Byte getAge() {
+    public Integer getAge() {
         return this.age;
     }
 
@@ -64,7 +64,7 @@ public class Student {
         private Long id;
         private String surname;
         private String firstName;
-        private Byte age;
+        private Integer age;
 
         public Builder id(Long id) {
             this.id = id;
@@ -81,7 +81,7 @@ public class Student {
             return this;
         }
 
-        public Builder age(Byte age) {
+        public Builder age(Integer age) {
             this.age = age;
             return this;
         }
