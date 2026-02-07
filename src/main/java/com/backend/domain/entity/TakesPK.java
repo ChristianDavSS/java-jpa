@@ -1,6 +1,5 @@
 package com.backend.domain.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 @Embeddable

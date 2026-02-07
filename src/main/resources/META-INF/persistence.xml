@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Persistence XML config file (Hibernate ORM and Jakarta-Persistence API) -->
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+    <!-- Define a persistence unit necessary for our EntityManagerFactory -->
+    <persistence-unit name="persistence-unit" transaction-type="RESOURCE_LOCAL">
+        <!-- Define the classes we need Hibernate to control -->
+        <class>com.backend.domain.entity.Student</class>
+        <class>com.backend.domain.entity.Subject</class>
+        <class>com.backend.domain.entity.Takes</class>
+        <class>com.backend.domain.entity.TakesPK</class>
+
+        <!-- Define the project properties for the DB -->
+        <properties>
+            <!-- Database connection -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/hibernatejava"/>
+            <property name="jakarta.persistence.jdbc.user" value="postgres"/>
+            <property name="jakarta.persistence.jdbc.password" value="admin"/>
+
+            <!-- Hibernate configuration -->
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true" />
+        </properties>
+
+    </persistence-unit>
+</persistence>
