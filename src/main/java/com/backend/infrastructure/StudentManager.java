@@ -6,6 +6,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.criteria.*;
 
+import java.util.List;
+
 
 public class StudentManager implements Repository<Student, Long> {
     // Get the EntityManager in order to manage the table
@@ -24,6 +26,14 @@ public class StudentManager implements Repository<Student, Long> {
     public Student getById(Long id) {
         // Fetch the student by their primary key and return the result
         return em.find(Student.class, id);
+    }
+
+    @Override
+    public List<Student> getAll() {
+        CriteriaQuery<Student> query = this.cb.createQuery(Student.class);
+        Root<Student> root = query.from(Student.class);
+
+        return this.em.createQuery(query.select(root)).getResultList();
     }
 
     @Override

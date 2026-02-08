@@ -25,6 +25,18 @@ public class Subject {
         this.credits = builder.credits;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Integer getCredits() {
+        return this.credits;
+    }
+
     public static Builder builder() {
         return new Builder();
     }

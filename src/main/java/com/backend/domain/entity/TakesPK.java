@@ -39,5 +39,9 @@ public class TakesPK {
             this.subject_id = subjectId;
             return this;
         }
+
+        public TakesPK build() {
+            return new TakesPK(this);
+        }
     }
 }
