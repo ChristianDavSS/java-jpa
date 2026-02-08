@@ -10,6 +10,10 @@ public final class BeanManager {
 
     private BeanManager() {}
 
+    public static EntityManagerFactory getEntityManagerFactory() {
+        return manager;
+    }
+
     public static EntityManager getEntityManager() {
         if (em == null) {
             em = manager.createEntityManager();
