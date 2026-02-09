@@ -57,17 +57,17 @@ public class StudentServlet extends HttpServlet {
         // get the ID from the parameters of the request
         Long id = Long.parseLong(idStr);
         // get a specific student
-        if (Helper.matchesRegex("^/student/[0-9]{1,10}$", path)) {
+        if (Helper.matchesRegex("^/student[0-9]{1,10}$", path)) {
             resp.getWriter().write(this.gson.toJson(this.studentService.getById(id)));
             return;
         }
 
         // see if a student exists
-        if (Helper.matchesRegex("^/student/exist/[0-9]{1,10}$", path)) {
+        if (Helper.matchesRegex("^/student/exist[0-9]{1,10}$", path)) {
             resp.getWriter().write(this.studentService.existsById(id).toString());
             return;
         }
-
+        // if none of the last conditions were true, we send an error in the http response
         resp.sendError(400, "Error");
     }
 

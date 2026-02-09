@@ -1,8 +1,8 @@
 package com.backend;
 
-import com.backend.application.StudentService;
+import com.backend.application.*;
 import com.backend.configuration.BeanConfig;
-import com.backend.infrastructure.servlet.StudentServlet;
+import com.backend.infrastructure.servlet.*;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
@@ -22,9 +22,11 @@ public class Main {
 
         // Add servlets into the server
         Tomcat.addServlet(ctx, "student", new StudentServlet(context.getBean(StudentService.class)));
+        Tomcat.addServlet(ctx, "subject", new SubjectServlet(context.getBean(SubjectService.class)));
 
         // Add the request mappings from the context
         ctx.addServletMappingDecoded("/student/*", "student");
+        ctx.addServletMappingDecoded("/subject/*", "subject");
 
         // create the HTTP connector to listen to our port
         tomcat.getConnector();
