@@ -1,4 +1,4 @@
-package com.backend.infrastructure;
+package com.backend.infrastructure.implementations;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

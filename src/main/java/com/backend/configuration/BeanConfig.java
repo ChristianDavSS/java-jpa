@@ -2,9 +2,10 @@ package com.backend.configuration;
 
 import com.backend.application.*;
 import com.backend.domain.entity.*;
-import com.backend.infrastructure.*;
 import com.backend.domain.ports.Repository;
+import com.backend.infrastructure.implementations.*;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * This allows me to configure the beans manually and not depend on any XML-based configuration
  * */
 @Configuration
+@ComponentScan("com.backend")
 public class BeanConfig {
     // studentService returns the bean which calls out the repository defined methods
     @Bean

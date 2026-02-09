@@ -1,4 +1,4 @@
-package com.backend.infrastructure;
+package com.backend.infrastructure.implementations;
 
 import com.backend.domain.entity.Subject;
 import com.backend.domain.ports.Repository;
