@@ -11,12 +11,12 @@ import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 
-public class SubjectManager implements Repository<Subject, Long> {
+public class SubjectImpl implements Repository<Subject, Long> {
     private final EntityManager em;
     private final CriteriaBuilder cb;
     private final EntityTransaction transaction;
 
-    public SubjectManager() {
+    public SubjectImpl() {
         this.em = BeanManager.getEntityManager();
         this.cb = this.em.getCriteriaBuilder();
         this.transaction = this.em.getTransaction();

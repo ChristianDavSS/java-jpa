@@ -1,19 +1,13 @@
 package com.backend;
 
-import com.backend.application.RepoInputAdapter;
-import com.backend.domain.entity.*;
-import com.backend.infrastructure.StudentManager;
-import com.backend.infrastructure.SubjectManager;
-import com.backend.infrastructure.TakesManager;
+import com.backend.configuration.BeanConfig;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        // define the adapters where we injected our repository implementation
-        // depending on the operation entity you want to manage you use one or another
-        RepoInputAdapter<Student, Long> studentManager = new RepoInputAdapter<>(new StudentManager());
-        RepoInputAdapter<Subject, Long> subjectManager = new RepoInputAdapter<>(new SubjectManager());
-        RepoInputAdapter<Takes, TakesPK> takesManager = new RepoInputAdapter<>(new TakesManager());
-
-        System.out.println(studentManager.getAll());
+        // set up the context to get beans from
+        ApplicationContext context = new AnnotationConfigApplicationContext(BeanConfig.class);
+        System.out.println(context.getClass());
     }
 }

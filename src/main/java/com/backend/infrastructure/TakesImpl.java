@@ -12,12 +12,12 @@ import jakarta.persistence.criteria.Root;
 
 import java.util.List;
 
-public class TakesManager implements Repository<Takes, TakesPK> {
+public class TakesImpl implements Repository<Takes, TakesPK> {
     private final EntityManager em;
     private final CriteriaBuilder cb;
     private final EntityTransaction transaction;
 
-    public TakesManager() {
+    public TakesImpl() {
         this.em = BeanManager.getEntityManager();
         this.cb = this.em.getCriteriaBuilder();
         this.transaction = this.em.getTransaction();

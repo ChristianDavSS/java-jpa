@@ -9,14 +9,14 @@ import jakarta.persistence.criteria.*;
 import java.util.List;
 
 
-public class StudentManager implements Repository<Student, Long> {
+public class StudentImpl implements Repository<Student, Long> {
     // Get the EntityManager in order to manage the table
     private final EntityManager em;
     // Get the criteria builder used for this class
     private final CriteriaBuilder cb;
     private final EntityTransaction entityTransaction;
 
-    public StudentManager() {
+    public StudentImpl() {
         this.em = BeanManager.getEntityManager();
         this.cb = this.em.getCriteriaBuilder();
         this.entityTransaction = this.em.getTransaction();
