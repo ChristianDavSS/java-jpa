@@ -24,7 +24,7 @@ public class Main {
         Tomcat.addServlet(ctx, "student", new StudentServlet(context.getBean(StudentService.class)));
 
         // Add the request mappings from the context
-        ctx.addServletMappingDecoded("/student", "student");
+        ctx.addServletMappingDecoded("/student/*", "student");
 
         // create the HTTP connector to listen to our port
         tomcat.getConnector();
