@@ -2,8 +2,11 @@ package com.backend.domain.entity;
 
 import jakarta.persistence.Embeddable;
 
+import java.io.Serializable;
+import java.util.Objects;
+
 @Embeddable
-public class TakesPK {
+public class TakesPK implements Serializable {
     private Long student_id;
     private Long subject_id;
 
@@ -20,6 +23,19 @@ public class TakesPK {
 
     public Long getSubjectId() {
         return this.subject_id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TakesPK takesPK = (TakesPK) o;
+        return Objects.equals(student_id, takesPK.student_id) && Objects.equals(subject_id, takesPK.subject_id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(student_id, subject_id);
     }
 
     public static Builder builder() {

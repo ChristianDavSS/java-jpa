@@ -1,7 +1,11 @@
 package com.backend.infrastructure.servlet;
 
+import com.backend.application.StudentService;
+import com.backend.application.SubjectService;
 import com.backend.application.TakesService;
 import com.backend.domain.Helper;
+import com.backend.domain.entity.Student;
+import com.backend.domain.entity.Subject;
 import com.backend.domain.entity.Takes;
 import com.backend.domain.entity.TakesPK;
 import com.google.gson.Gson;
@@ -15,10 +19,14 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class TakesServlet extends HttpServlet {
+    private final StudentService studentService;
+    private final SubjectService subjectService;
     private final TakesService takesService;
     private final Gson gson;
 
-    public TakesServlet(TakesService takesService) {
+    public TakesServlet(StudentService studentService, SubjectService subjectService, TakesService takesService) {
+        this.studentService = studentService;
+        this.subjectService = subjectService;
         this.takesService = takesService;
         this.gson = new Gson();
     }
@@ -66,7 +74,23 @@ public class TakesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // fetch the body from the request
         BufferedReader reader = req.getReader();
-        Takes takes = this.gson.fromJson(reader, Takes.class);
+        // get the primary keys from the body
+        TakesPK takesPK = this.gson.fromJson(reader, TakesPK.class);
+
+        Student student = this.studentService.getById(takesPK.getStudentId());
+        Subject subject = this.subjectService.getById(takesPK.getSubjectId());
+
+        if (student == null || subject == null) {
+            resp.sendError(403, "Not found...");
+            return;
+        }
+
+        Takes takes = Takes
+            .builder()
+            .takesPK(takesPK)
+            .student(student)
+            .subject(subject)
+            .build();
 
         // save the user in the database
         takes = this.takesService.save(takes);

@@ -40,6 +40,7 @@ public class TakesImpl implements Repository<Takes, TakesPK> {
     @Override
     public Takes save(Takes instance) {
         this.transaction.begin();
+        System.out.println(instance.toString());
         Takes t = this.em.merge(instance);
         this.transaction.commit();
 
