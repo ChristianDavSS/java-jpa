@@ -86,6 +86,6 @@ public class StudentImpl implements Repository<Student, Long> {
         // set up a where condition
         query = query.select(root).where(this.cb.equal(root.get("id"), id));
 
-        return this.em.createQuery(query).getSingleResult() != null;
+        return !this.em.createQuery(query).getResultList().isEmpty();
     }
 }

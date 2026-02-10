@@ -54,7 +54,7 @@ public class TakesServlet extends HttpServlet {
             return;
         }
 
-        if (Helper.matchesRegex("^/takes/exists[0-9+]$", path)) {
+        if (Helper.matchesRegex("^/takes/exists[0-9]+$", path)) {
             resp.getWriter().write(this.takesService.existsById(id).toString());
             return;
         }

@@ -78,6 +78,6 @@ public class SubjectImpl implements Repository<Subject, Long> {
         CriteriaQuery<Subject> cq = this.cb.createQuery(Subject.class);
         Root<Subject> root = cq.from(Subject.class);
 
-        return this.em.createQuery(cq.select(root).where(this.cb.equal(root.get("id"), id))).getSingleResult() != null;
+        return !this.em.createQuery(cq.select(root).where(this.cb.equal(root.get("id"), id))).getResultList().isEmpty();
     }
 }

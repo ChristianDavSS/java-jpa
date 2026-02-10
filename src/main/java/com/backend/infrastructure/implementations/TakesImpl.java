@@ -5,6 +5,7 @@ import com.backend.domain.entity.TakesPK;
 import com.backend.domain.ports.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.NoResultException;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaDelete;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -69,6 +70,6 @@ public class TakesImpl implements Repository<Takes, TakesPK> {
         CriteriaQuery<Takes> query = this.cb.createQuery(Takes.class);
         Root<Takes> root = query.from(Takes.class);
 
-        return this.em.createQuery(query.where(this.cb.equal(root.get("id"), id))).getSingleResult() != null;
+        return !this.em.createQuery(query.where(this.cb.equal(root.get("id"), id))).getResultList().isEmpty();
     }
 }
