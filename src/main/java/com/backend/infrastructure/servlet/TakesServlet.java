@@ -1,13 +1,8 @@
 package com.backend.infrastructure.servlet;
 
-import com.backend.application.StudentService;
-import com.backend.application.SubjectService;
-import com.backend.application.TakesService;
+import com.backend.application.*;
 import com.backend.domain.Helper;
-import com.backend.domain.entity.Student;
-import com.backend.domain.entity.Subject;
-import com.backend.domain.entity.Takes;
-import com.backend.domain.entity.TakesPK;
+import com.backend.domain.entity.*;
 import com.google.gson.Gson;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -16,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Objects;
 
 public class TakesServlet extends HttpServlet {
     private final StudentService studentService;
@@ -94,6 +88,10 @@ public class TakesServlet extends HttpServlet {
 
         // save the user in the database
         takes = this.takesService.save(takes);
+        if (takes == null) {
+            resp.sendError(403, "Already exists");
+            return;
+        }
 
         // return a response as json
         resp.getWriter().write(this.gson.toJson(takes, Takes.class));
