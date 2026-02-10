@@ -50,7 +50,7 @@ public class StudentServlet extends HttpServlet {
 
         // get all method
         if (Helper.matchesRegex("^/student$", path)) {
-            resp.getWriter().write(this.studentService.getAll().toString());
+            resp.getWriter().write(this.gson.toJson(this.studentService.getAll()));
             return;
         }
 

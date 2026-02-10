@@ -17,12 +17,12 @@ public class TakesService {
         return this.takesRepository.getAll();
     }
 
-    public Takes save(Takes subject) {
-        return this.takesRepository.save(subject);
+    public Takes save(Takes takes) {
+        return this.takesRepository.save(takes);
     }
 
-    public void update(Takes subject) {
-        this.takesRepository.update(subject);
+    public void update(Takes takes) {
+        this.takesRepository.update(takes);
     }
 
     public Takes getById(TakesPK id) {

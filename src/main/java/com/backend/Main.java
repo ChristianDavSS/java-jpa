@@ -23,10 +23,12 @@ public class Main {
         // Add servlets into the server
         Tomcat.addServlet(ctx, "student", new StudentServlet(context.getBean(StudentService.class)));
         Tomcat.addServlet(ctx, "subject", new SubjectServlet(context.getBean(SubjectService.class)));
+        Tomcat.addServlet(ctx, "takes", new TakesServlet(context.getBean(TakesService.class)));
 
         // Add the request mappings from the context
         ctx.addServletMappingDecoded("/student/*", "student");
         ctx.addServletMappingDecoded("/subject/*", "subject");
+        ctx.addServletMappingDecoded("/takes/*", "takes");
 
         // create the HTTP connector to listen to our port
         tomcat.getConnector();
