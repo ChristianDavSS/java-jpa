@@ -6,13 +6,13 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class TakesPK implements Serializable {
+public class EnrollmentPK implements Serializable {
     private Long student_id;
     private Long subject_id;
 
-    public TakesPK() {}
+    public EnrollmentPK() {}
 
-    public TakesPK(Builder builder) {
+    public EnrollmentPK(Builder builder) {
         this.student_id = builder.student_id;
         this.subject_id = builder.subject_id;
     }
@@ -29,8 +29,8 @@ public class TakesPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TakesPK takesPK = (TakesPK) o;
-        return Objects.equals(student_id, takesPK.student_id) && Objects.equals(subject_id, takesPK.subject_id);
+        EnrollmentPK enrollmentPK = (EnrollmentPK) o;
+        return Objects.equals(student_id, enrollmentPK.student_id) && Objects.equals(subject_id, enrollmentPK.subject_id);
     }
 
     @Override
@@ -56,8 +56,8 @@ public class TakesPK implements Serializable {
             return this;
         }
 
-        public TakesPK build() {
-            return new TakesPK(this);
+        public EnrollmentPK build() {
+            return new EnrollmentPK(this);
         }
     }
 }

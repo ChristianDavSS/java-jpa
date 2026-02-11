@@ -55,7 +55,14 @@ public class StudentServlet extends HttpServlet {
         }
 
         // get the ID from the parameters of the request
-        Long id = Long.parseLong(idStr);
+        long id;
+        try {
+            id = Long.parseLong(idStr);
+        } catch (NumberFormatException e) {
+            resp.sendError(406, "Data type error...");
+            return;
+        }
+
         // get a specific student
         if (Helper.matchesRegex("^/student[0-9]{1,10}$", path)) {
             resp.getWriter().write(this.gson.toJson(this.studentService.getById(id)));
@@ -68,12 +75,18 @@ public class StudentServlet extends HttpServlet {
             return;
         }
         // if none of the last conditions were true, we send an error in the http response
-        resp.sendError(400, "Error");
+        resp.sendError(404, "Not found");
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long id = Long.parseLong(req.getParameter("id"));
+        long id;
+        try {
+            id = Long.parseLong(req.getParameter("id"));
+        } catch (NumberFormatException e) {
+            resp.sendError(406, "Data type error...");
+            return;
+        }
         this.studentService.deleteById(id);
     }
 

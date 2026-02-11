@@ -12,8 +12,8 @@
         <!-- Define the classes we need Hibernate to control -->
         <class>com.backend.domain.entity.Student</class>
         <class>com.backend.domain.entity.Subject</class>
-        <class>com.backend.domain.entity.Takes</class>
-        <class>com.backend.domain.entity.TakesPK</class>
+        <class>com.backend.domain.entity.Enrollment</class>
+        <class>com.backend.domain.entity.EnrollmentPK</class>
 
         <!-- Define the project properties for the DB -->
         <properties>

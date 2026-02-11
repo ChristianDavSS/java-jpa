@@ -7,10 +7,10 @@ import jakarta.persistence.*;
  * Uses a composited primary key
  * */
 @Entity
-public class Takes {
+public class Enrollment {
     // Embed the primary key
     @EmbeddedId
-    private TakesPK id;
+    private EnrollmentPK id;
 
     // set up the primary keys
     @ManyToOne
@@ -23,15 +23,15 @@ public class Takes {
     @JoinColumn(name = "subject_id")
     private Subject subject;
 
-    public Takes() {}
+    public Enrollment() {}
 
-    public Takes(Builder builder) {
-        this.id = builder.takesPK;
+    public Enrollment(Builder builder) {
+        this.id = builder.enrollmentPK;
         this.student = builder.student;
         this.subject = builder.subject;
     }
 
-    public TakesPK getId() {
+    public EnrollmentPK getId() {
         return this.id;
     }
 
@@ -57,12 +57,12 @@ public class Takes {
     }
 
     public static class Builder {
-        private TakesPK takesPK;
+        private EnrollmentPK enrollmentPK;
         private Student student;
         private Subject subject;
 
-        public Builder takesPK(TakesPK takesPK) {
-            this.takesPK = takesPK;
+        public Builder takesPK(EnrollmentPK enrollmentPK) {
+            this.enrollmentPK = enrollmentPK;
             return this;
         }
 
@@ -76,8 +76,8 @@ public class Takes {
             return this;
         }
 
-        public Takes build() {
-            return new Takes(this);
+        public Enrollment build() {
+            return new Enrollment(this);
         }
     }
 }

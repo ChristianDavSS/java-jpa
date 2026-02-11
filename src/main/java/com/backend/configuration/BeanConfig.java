@@ -41,13 +41,13 @@ public class BeanConfig {
 
     // Takes beans
     @Bean
-    public TakesService takesService() {
-        return new TakesService(takesRepository());
+    public EnrollmentService enrollmentService() {
+        return new EnrollmentService(enrollmentRepository());
     }
 
     // takesRepository returns the class which implements a Repository interface
     @Bean
-    public Repository<Takes, TakesPK> takesRepository() {
-        return new TakesImpl();
+    public Repository<Enrollment, EnrollmentPK> enrollmentRepository() {
+        return new EnrollmentImpl();
     }
 }

@@ -23,10 +23,10 @@ public class Main {
         // Add servlets into the server
         Tomcat.addServlet(ctx, "student", new StudentServlet(context.getBean(StudentService.class)));
         Tomcat.addServlet(ctx, "subject", new SubjectServlet(context.getBean(SubjectService.class)));
-        Tomcat.addServlet(ctx, "takes", new TakesServlet(
+        Tomcat.addServlet(ctx, "takes", new EnrollmentServlet(
                 context.getBean(StudentService.class),
                 context.getBean(SubjectService.class),
-                context.getBean(TakesService.class))
+                context.getBean(EnrollmentService.class))
         );
 
         // Add the request mappings from the context

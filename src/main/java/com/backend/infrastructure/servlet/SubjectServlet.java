@@ -33,11 +33,11 @@ public class SubjectServlet extends HttpServlet {
             return;
         }
 
-        Long id = null;
+        Long id;
         try {
             id = Long.parseLong(idStr);
         } catch (NumberFormatException e) {
-            resp.getWriter().write("Error parsing the ID into Long type");
+            resp.sendError(406, "Datatype error...");
             return;
         }
 
@@ -79,16 +79,16 @@ public class SubjectServlet extends HttpServlet {
         // get the ID parameter from the request
         String idStr = req.getParameter("id");
         if (idStr.isEmpty()) {
-            resp.sendError(403, "Error... not id to delete");
+            resp.sendError(406, "Error... not id to delete");
             return;
         }
 
         // parse the id from string to long (managing the error)
-        Long id = null;
+        long id;
         try {
             id = Long.parseLong(idStr);
         } catch (NumberFormatException e) {
-            resp.sendError(403, "Error parsing the ID into Long type");
+            resp.sendError(406, "Error parsing the ID into Long type");
             return;
         }
 
